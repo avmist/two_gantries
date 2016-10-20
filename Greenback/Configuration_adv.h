@@ -143,7 +143,7 @@
 // Only a few motherboards support this, like RAMPS, which have dual extruder support (the 2nd, often unused, extruder driver is used
 // to control the 2nd Z axis stepper motor). The pins are currently only defined for a RAMPS motherboards.
 // On a RAMPS (or other 5 driver) motherboard, using this feature will limit you to using 1 extruder.
-//#define Z_DUAL_STEPPER_DRIVERS
+#define Z_DUAL_STEPPER_DRIVERS
 
 #ifdef Z_DUAL_STEPPER_DRIVERS
   #undef EXTRUDERS
@@ -169,46 +169,46 @@
 // A dual x-carriage design has the advantage that the inactive extruder can be parked which
 // prevents hot-end ooze contaminating the print. It also reduces the weight of each x-carriage
 // allowing faster printing speeds.
-//#define DUAL_X_CARRIAGE
+#define DUAL_X_CARRIAGE
 #ifdef DUAL_X_CARRIAGE
-// Configuration for second X-carriage
-// Note: the first x-carriage is defined as the x-carriage which homes to the minimum endstop;
-// the second x-carriage always homes to the maximum endstop.
-#define X2_MIN_POS 80     // set minimum to ensure second x-carriage doesn't hit the parked first X-carriage
-#define X2_MAX_POS 353    // set maximum to the distance between toolheads when both heads are homed
-#define X2_HOME_DIR 1     // the second X-carriage always homes to the maximum endstop position
-#define X2_HOME_POS X2_MAX_POS // default home position is the maximum carriage position
-    // However: In this mode the EXTRUDER_OFFSET_X value for the second extruder provides a software
-    // override for X2_HOME_POS. This also allow recalibration of the distance between the two endstops
-    // without modifying the firmware (through the "M218 T1 X???" command).
-    // Remember: you should set the second extruder x-offset to 0 in your slicer.
+  // Configuration for second X-carriage
+  // Note: the first x-carriage is defined as the x-carriage which homes to the minimum endstop;
+  // the second x-carriage always homes to the maximum endstop.
+  #define X2_MIN_POS 80     // set minimum to ensure second x-carriage doesn't hit the parked first X-carriage
+  #define X2_MAX_POS 353    // set maximum to the distance between toolheads when both heads are homed
+  #define X2_HOME_DIR 1     // the second X-carriage always homes to the maximum endstop position
+  #define X2_HOME_POS X2_MAX_POS // default home position is the maximum carriage position
+      // However: In this mode the EXTRUDER_OFFSET_X value for the second extruder provides a software
+      // override for X2_HOME_POS. This also allow recalibration of the distance between the two endstops
+      // without modifying the firmware (through the "M218 T1 X???" command).
+      // Remember: you should set the second extruder x-offset to 0 in your slicer.
 
-// Pins for second x-carriage stepper driver (defined here to avoid further complicating pins.h)
-#define X2_ENABLE_PIN 29
-#define X2_STEP_PIN 25
-#define X2_DIR_PIN 23
+  // Pins for second x-carriage stepper driver (defined here to avoid further complicating pins.h)
+  #define X2_ENABLE_PIN 29
+  #define X2_STEP_PIN 25
+  #define X2_DIR_PIN 23
 
-// There are a few selectable movement modes for dual x-carriages using M605 S<mode>
-//    Mode 0: Full control. The slicer has full control over both x-carriages and can achieve optimal travel results
-//                           as long as it supports dual x-carriages. (M605 S0)
-//    Mode 1: Auto-park mode. The firmware will automatically park and unpark the x-carriages on tool changes so
-//                           that additional slicer support is not required. (M605 S1)
-//    Mode 2: Duplication mode. The firmware will transparently make the second x-carriage and extruder copy all
-//                           actions of the first x-carriage. This allows the printer to print 2 arbitrary items at
-//                           once. (2nd extruder x offset and temp offset are set using: M605 S2 [Xnnn] [Rmmm])
+  // There are a few selectable movement modes for dual x-carriages using M605 S<mode>
+  //    Mode 0: Full control. The slicer has full control over both x-carriages and can achieve optimal travel results
+  //                           as long as it supports dual x-carriages. (M605 S0)
+  //    Mode 1: Auto-park mode. The firmware will automatically park and unpark the x-carriages on tool changes so
+  //                           that additional slicer support is not required. (M605 S1)
+  //    Mode 2: Duplication mode. The firmware will transparently make the second x-carriage and extruder copy all
+  //                           actions of the first x-carriage. This allows the printer to print 2 arbitrary items at
+  //                           once. (2nd extruder x offset and temp offset are set using: M605 S2 [Xnnn] [Rmmm])
 
-// This is the default power-up mode which can be later using M605.
-#define DEFAULT_DUAL_X_CARRIAGE_MODE 0
+  // This is the default power-up mode which can be later using M605.
+  #define DEFAULT_DUAL_X_CARRIAGE_MODE 0
 
-// As the x-carriages are independent we can now account for any relative Z offset
-#define EXTRUDER1_Z_OFFSET 0.0           // z offset relative to extruder 0
+  // As the x-carriages are independent we can now account for any relative Z offset
+  #define EXTRUDER1_Z_OFFSET 0.0           // z offset relative to extruder 0
 
-// Default settings in "Auto-park Mode"
-#define TOOLCHANGE_PARK_ZLIFT   0.2      // the distance to raise Z axis when parking an extruder
-#define TOOLCHANGE_UNPARK_ZLIFT 1        // the distance to raise Z axis when unparking an extruder
+  // Default settings in "Auto-park Mode"
+  #define TOOLCHANGE_PARK_ZLIFT   0.2      // the distance to raise Z axis when parking an extruder
+  #define TOOLCHANGE_UNPARK_ZLIFT 1        // the distance to raise Z axis when unparking an extruder
 
-// Default x offset in duplication mode (typically set to half print bed width)
-#define DEFAULT_DUPLICATION_X_OFFSET 100
+  // Default x offset in duplication mode (typically set to half print bed width)
+  #define DEFAULT_DUPLICATION_X_OFFSET 100
 
 #endif //DUAL_X_CARRIAGE
 
@@ -220,9 +220,9 @@
 
 #define AXIS_RELATIVE_MODES {false, false, false, false}
 #ifdef CONFIG_STEPPERS_TOSHIBA
-#define MAX_STEP_FREQUENCY 10000 // Max step frequency for Toshiba Stepper Controllers
+  #define MAX_STEP_FREQUENCY 10000 // Max step frequency for Toshiba Stepper Controllers
 #else
-#define MAX_STEP_FREQUENCY 40000 // Max step frequency for Ultimaker (5000 pps / half step)
+  #define MAX_STEP_FREQUENCY 40000 // Max step frequency for Ultimaker (5000 pps / half step)
 #endif
 //By default pololu step drivers require an active high signal. However, some high power drivers require an active low signal as step.
 #define INVERT_X_STEP_PIN false
@@ -238,7 +238,7 @@
 
 // Feedrates for manual moves along X, Y, Z, E from panel
 #ifdef ULTIPANEL
-#define MANUAL_FEEDRATE {50*60, 50*60, 4*60, 60}  // set the speeds for manual moves (mm/min)
+  #define MANUAL_FEEDRATE {50*60, 50*60, 4*60, 60}  // set the speeds for manual moves (mm/min)
 #endif
 
 //Comment to disable setting feedrate multiplier via encoder
@@ -389,6 +389,7 @@ const unsigned int dropsegments=5; //everything with less than this number of st
   #define PS_ON_AWAKE  LOW
   #define PS_ON_ASLEEP HIGH
 #endif
+
 // 2 = X-Box 360 203W
 #if (POWER_SUPPLY == 2)
   #define PS_ON_AWAKE  HIGH
@@ -410,11 +411,9 @@ const unsigned int dropsegments=5; //everything with less than this number of st
   #define BLOCK_BUFFER_SIZE 16 // maximize block buffer
 #endif
 
-
 //The ASCII buffer for receiving from the serial:
 #define MAX_CMD_SIZE 96
 #define BUFSIZE 4
-
 
 // Firmware based and LCD controlled retract
 // M207 and M208 can be used to define parameters for the retraction.

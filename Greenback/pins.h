@@ -24,11 +24,11 @@
 
 #if MB(5DPRINT)
 
-#define KNOWN_BOARD 1
-#define AT90USB 1286  // Disable GreenbackSerial etc.
+  #define KNOWN_BOARD 1
+  #define AT90USB 1286  // Disable GreenbackSerial etc.
 
 #ifndef __AVR_AT90USB1286__
-#error Oops!  Make sure you have 'Teensy++ 2.0' selected from the 'Tools -> Boards' menu.
+  #error Oops!  Make sure you have 'Teensy++ 2.0' selected from the 'Tools -> Boards' menu.
 #endif
 
 #define LARGE_FLASH        true
