@@ -779,9 +779,9 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
  * Note may require analog pins to be defined for different motherboards
  **********************************************************************/
 // Uncomment below to enable
-//#define FILAMENT_SENSOR
+#define FILAMENT_SENSOR
 
-#define FILAMENT_SENSOR_EXTRUDER_NUM	0  //The number of the extruder that has the filament sensor (0,1,2)
+#define FILAMENT_SENSOR_EXTRUDER_NUM	1  //The number of the extruder that has the filament sensor (0,1,2)
 #define MEASUREMENT_DELAY_CM			14  //measurement delay in cm.  This is the distance from filament sensor to middle of barrel
 
 #define DEFAULT_NOMINAL_FILAMENT_DIA  3.0  //Enter the diameter (in mm) of the filament generally used (3.0 mm or 1.75 mm) - this is then used in the slicer software.  Used for sensor reading validation
@@ -795,15 +795,8 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
 //When using an LCD, uncomment the line below to display the Filament sensor data on the last line instead of status.  Status will appear for 5 sec.
 //#define FILAMENT_LCD_DISPLAY
 
-
-
-
-
-
 #include "Configuration_adv.h"
 #include "thermistortables.h"
-
-
 
 /**********************************************************************\
  * Support for bioprinter head
@@ -817,6 +810,5 @@ const bool Z_MAX_ENDSTOP_INVERTING = false; // set to true to invert the logic o
  **********************************************************************/
 // Uncomment below to enable
 #define BIOSUPPORT
-
 
 #endif //__CONFIGURATION_H
